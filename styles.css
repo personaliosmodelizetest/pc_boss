@@ -1,0 +1,280 @@
+:root {
+  --bg: #0e1116;
+  --bg-soft: #161b22;
+  --bg-card: #1c232d;
+  --border: #2a3340;
+  --text: #e6edf3;
+  --text-dim: #9aa7b4;
+  --accent: #3b82f6;
+  --accent-2: #22d3ee;
+  --up: #22c55e;
+  --down: #ef4444;
+  --flat: #94a3b8;
+  --gold: #fbbf24;
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  background: radial-gradient(1200px 600px at 80% -10%, #1b2733 0%, var(--bg) 55%);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 18px 18px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ---------- Topbar ---------- */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(135deg, var(--bg-soft), var(--bg-card));
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px 20px;
+  box-shadow: var(--shadow);
+  flex-wrap: wrap;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.logo { font-size: 34px; }
+.brand h1 { font-size: 22px; letter-spacing: 1px; }
+.subtitle { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+
+.stats { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; }
+.stat { display: flex; flex-direction: column; gap: 2px; min-width: 80px; }
+.stat-label { font-size: 12px; color: var(--text-dim); }
+.stat-sub { font-size: 11px; color: var(--accent-2); }
+.stat-value { font-size: 19px; font-weight: 700; }
+.stat-label b { color: var(--accent-2); }
+
+.mini-btn {
+  margin-top: 3px;
+  font-size: 11px;
+  padding: 3px 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  border-radius: 7px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+.mini-btn:hover { color: var(--text); border-color: var(--accent); }
+
+/* ---------- Event banner ---------- */
+.event-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(135deg, #1d2b3a, #182230);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-2);
+  border-radius: 14px;
+  padding: 14px 18px;
+  box-shadow: var(--shadow);
+  animation: slidein 0.4s ease;
+}
+.event-banner.good { border-left-color: var(--up); }
+.event-banner.bad { border-left-color: var(--down); }
+.event-icon { font-size: 30px; }
+.event-text strong { font-size: 15px; }
+.event-text p { font-size: 13px; color: var(--text-dim); margin-top: 3px; }
+@keyframes slidein { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
+/* ---------- Market ---------- */
+.market {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 8px 6px 6px;
+  box-shadow: var(--shadow);
+}
+.market-head { display: flex; justify-content: space-between; align-items: center; padding: 8px 14px; }
+.market-head h2 { font-size: 16px; }
+.legend { display: flex; gap: 14px; font-size: 12px; }
+.legend .up { color: var(--up); }
+.legend .down { color: var(--down); }
+.legend .flat { color: var(--flat); }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 820px; }
+thead th {
+  font-size: 12px;
+  color: var(--text-dim);
+  text-align: right;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+}
+thead th:first-child { text-align: left; }
+tbody td { padding: 10px 12px; text-align: right; border-bottom: 1px solid rgba(42,51,64,0.5); font-size: 14px; }
+tbody td:first-child { text-align: left; }
+tbody tr:hover { background: rgba(59,130,246,0.06); }
+
+.part-name { display: flex; align-items: center; gap: 9px; }
+.part-name .pic { font-size: 20px; }
+.part-name .nm { font-weight: 600; }
+.part-name .cat { font-size: 11px; color: var(--text-dim); }
+
+.price { font-weight: 700; font-variant-numeric: tabular-nums; }
+.chg { font-weight: 600; font-variant-numeric: tabular-nums; }
+.chg.up { color: var(--up); }
+.chg.down { color: var(--down); }
+.chg.flat { color: var(--flat); }
+
+.pnl.up { color: var(--up); }
+.pnl.down { color: var(--down); }
+.pnl.flat { color: var(--text-dim); }
+
+.spark { display: block; }
+
+.trade-col { text-align: right; }
+.trade { display: flex; gap: 5px; align-items: center; justify-content: flex-end; flex-wrap: nowrap; }
+.qty {
+  width: 54px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 7px;
+  padding: 5px 6px;
+  text-align: center;
+  font-size: 13px;
+}
+.qty::-webkit-outer-spin-button, .qty::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.buy-btn, .sell-btn {
+  border: none;
+  border-radius: 7px;
+  padding: 6px 11px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.12s;
+  color: #fff;
+}
+.buy-btn { background: #15803d; }
+.buy-btn:hover { background: #1a9c4b; }
+.sell-btn { background: #b91c1c; }
+.sell-btn:hover { background: #d62525; }
+.buy-btn:disabled, .sell-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+/* ---------- Action bar ---------- */
+.actionbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 12px 18px;
+  box-shadow: var(--shadow);
+  flex-wrap: wrap;
+}
+.log {
+  font-size: 13px;
+  color: var(--text-dim);
+  min-height: 20px;
+  flex: 1;
+  min-width: 220px;
+}
+.log .ok { color: var(--up); }
+.log .err { color: var(--down); }
+.action-buttons { display: flex; gap: 10px; }
+.primary-btn {
+  background: linear-gradient(135deg, var(--accent), #2563eb);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 11px 22px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(37,99,235,0.4);
+  transition: 0.15s;
+}
+.primary-btn:hover { transform: translateY(-1px); filter: brightness(1.08); }
+.ghost-btn {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 11px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+.ghost-btn:hover { color: var(--text); border-color: var(--accent); }
+
+/* ---------- Modal ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  backdrop-filter: blur(3px);
+}
+.modal-overlay[hidden] { display: none; }
+.modal {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px 30px;
+  max-width: 440px;
+  width: calc(100% - 40px);
+  text-align: center;
+  box-shadow: var(--shadow);
+  animation: pop 0.3s ease;
+}
+@keyframes pop { from { transform: scale(0.9); opacity: 0; } to { transform: none; opacity: 1; } }
+.modal h2 { font-size: 24px; margin-bottom: 10px; }
+.modal p { color: var(--text-dim); font-size: 14px; line-height: 1.6; }
+.modal-score {
+  display: flex;
+  justify-content: space-around;
+  margin: 22px 0;
+  gap: 12px;
+}
+.modal-score div { display: flex; flex-direction: column; gap: 6px; }
+.modal-score span { font-size: 12px; color: var(--text-dim); }
+.modal-score b { font-size: 22px; color: var(--gold); }
+.help-modal { text-align: left; max-width: 480px; }
+.help-modal ul { list-style: none; display: flex; flex-direction: column; gap: 11px; margin: 18px 0; }
+.help-modal li { font-size: 13.5px; line-height: 1.55; color: var(--text); }
+.help-modal b { color: var(--accent-2); }
+
+.help-fab {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  z-index: 40;
+}
+.help-fab:hover { border-color: var(--accent); }
+
+@media (max-width: 640px) {
+  .brand h1 { font-size: 18px; }
+  .stat-value { font-size: 16px; }
+  .stats { gap: 14px; }
+}
