@@ -28,6 +28,10 @@
           <span class="stat-value" id="cash">¥0</span>
         </div>
         <div class="stat">
+          <span class="stat-label">存款</span>
+          <span class="stat-value" id="bank">¥0</span>
+        </div>
+        <div class="stat">
           <span class="stat-label">净资产</span>
           <span class="stat-value" id="netWorth">¥0</span>
         </div>
@@ -45,6 +49,30 @@
       <div class="event-text">
         <strong id="eventTitle">本周市场快讯</strong>
         <p id="eventDesc">欢迎来到电脑配件批发市场，开始你的经营之路吧！</p>
+      </div>
+    </section>
+
+    <!-- 大宗商品行情 -->
+    <section class="commodity-bar" id="commodityBar">
+      <span class="cb-title">大宗商品</span>
+      <div class="cb-list" id="commodityList"></div>
+      <span class="cb-hint">影响 电源 / 机箱 / 散热器 / 主板 成本</span>
+    </section>
+
+    <!-- 银行 -->
+    <section class="bank-bar">
+      <div class="bank-info">
+        <span class="bank-ic">🏦</span>
+        <div>
+          <strong>银行存款</strong>
+          <p class="bank-rate" id="bankRate">年化 5.2% · 每周复利 · 无风险</p>
+        </div>
+      </div>
+      <div class="bank-actions">
+        <input class="bank-input" id="bankAmount" type="number" min="1" placeholder="金额" />
+        <button id="depositBtn" class="bank-btn deposit">存入</button>
+        <button id="withdrawBtn" class="bank-btn withdraw">取出</button>
+        <button id="depositAllBtn" class="bank-btn ghost">全部存入</button>
       </div>
     </section>
 
@@ -100,6 +128,23 @@
     </div>
   </div>
 
+  <!-- 装机档口订单 -->
+  <div class="modal-overlay" id="orderOverlay" hidden>
+    <div class="modal order-modal">
+      <h2>🛠️ 装机档口订单</h2>
+      <p id="orderDesc">有顾客上门装机，想要以下配件：</p>
+      <div class="order-list" id="orderList"></div>
+      <div class="order-total">
+        <span>订单报价（含装机溢价 <b id="orderPremium">0%</b>）</span>
+        <b id="orderTotal">¥0</b>
+      </div>
+      <div class="order-buttons">
+        <button id="orderReject" class="ghost-btn">拒单 · 留货等行情</button>
+        <button id="orderAccept" class="primary-btn">接单 · 卖出平仓</button>
+      </div>
+    </div>
+  </div>
+
   <!-- 帮助 -->
   <button id="helpBtn" class="help-fab" title="玩法说明">?</button>
   <div class="modal-overlay" id="helpOverlay" hidden>
@@ -110,7 +155,9 @@
         <li>📈 <b>低买高卖</b>：每周价格会波动。趁低价买入，等价格上涨后卖出赚差价。</li>
         <li>📰 <b>市场事件</b>：每周开始会有事件，比如「挖矿热潮」让显卡暴涨、「新品发布」让旧款暴跌，留意它们提前布局。</li>
         <li>📦 <b>仓库容量</b>：库存总件数不能超过容量，可花钱扩建。</li>
-        <li>💸 <b>破产</b>：现金为负且没有库存可卖，就会破产出局。</li>
+        <li>🛢️ <b>大宗商品</b>：原油、铜的指数每周波动，会推动电源/机箱/散热器/主板的成本，留意提前布局。</li>
+        <li>🏦 <b>银行存款</b>：闲钱可存银行，年化 5.2% 每周复利，无风险稳增值；抄底时再取出。</li>
+        <li>🛠️ <b>装机档口</b>：每月会有顾客上门装机下单，按「市场价+装机溢价」收购你的部分库存。可接单变现，也可拒单留货等涨。</li>
         <li>⏭️ 点「进入下一周」结算并刷新行情。</li>
       </ul>
       <button id="helpClose" class="primary-btn">明白了</button>
